@@ -15,4 +15,3 @@ jobs:
           workflow: automation.yml
           repo: debug-community/.github
           ref: main
-          token: ${{ secrets.GH_TOKEN }}
