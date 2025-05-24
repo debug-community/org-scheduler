@@ -1,4 +1,3 @@
-const cron = require('node-cron');
 const axios = require('axios');
 
 const {
@@ -28,8 +27,5 @@ const triggerWorkflow = async () => {
   }
 };
 
-// 🔁 Every hour at minute 0
-cron.schedule('0 * * * *', () => {
-  console.log(`[${new Date().toISOString()}] ⏰ Triggering GitHub workflow...`);
-  triggerWorkflow();
-});
+console.log(`[${new Date().toISOString()}] ⏰ Triggering GitHub workflow...`);
+triggerWorkflow();
