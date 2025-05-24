@@ -6,7 +6,7 @@ const {
 
 const triggerWorkflow = async () => {
   try {
-    const url = `https://api.github.com/repos/debug-community/org-scheduler/actions/workflows/automation.yml/dispatches`;
+    const url = `https://api.github.com/repos/debug-community/.github/actions/workflows/automation.yml/dispatches`;
 
     const res = await axios.post(
       url,
