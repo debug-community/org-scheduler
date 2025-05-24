@@ -1,0 +1,18 @@
+name: Proxy Scheduler
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # 매 시간마다
+  workflow_dispatch:
+
+jobs:
+  trigger-org-update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call workflow in .github repo
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: automation.yml
+          repo: debug-community/.github
+          ref: main
+          token: ${{ secrets.GH_TOKEN }}
