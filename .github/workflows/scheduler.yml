@@ -8,10 +8,20 @@ on:
 jobs:
   trigger-org-update:
     runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
     steps:
-      - name: Call workflow in .github repo
-        uses: benc-uk/workflow-dispatch@v1
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
         with:
-          workflow: automation.yml
-          repo: debug-community/.github
-          ref: main
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run script
+        run: node index.js
